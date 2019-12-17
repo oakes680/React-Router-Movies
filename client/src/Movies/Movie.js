@@ -26,11 +26,13 @@ const Movie = (props) => {
 
   },[])
   
-  // Uncomment this only when you have moved on to the stretch goals
-  // const saveMovie = () => {
-  //   const addToSavedList = props.addToSavedList;
-  //   addToSavedList(movie)
-  // }
+
+  const saveMovie = () => {
+    const addToSavedList = props.addToSavedList;
+    addToSavedList(movie);
+    props.changeTitle()
+    
+  }
 
   if (!movie) {
     return <div>Loading movie information...</div>;
@@ -58,7 +60,9 @@ const Movie = (props) => {
         ))}
       </div>
      
-      <div className="save-button">Save</div>
+      <div className="save-button">
+        <button onClick={()=> saveMovie(movie)}>Save your fav movie</button>
+      </div>
     </div>
     
   );
